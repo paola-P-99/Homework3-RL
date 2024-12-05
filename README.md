@@ -19,9 +19,9 @@ source install/setup.bash
 The repository provides two worlds to launch in Gazebo: one containing a Sphere model, and the other an aruco marker. 
 To launch the first, enter the following command:
 ```
-```
 ros2 launch iiwa_bringup iiwa.launch.py command_interface:="velocity" robot_controller:="velocity_controller" use_sim:=true use_vision:=true world_file:=sphere.world initial_positions_file:=initial_positions_sphere.yaml
 ```
+
 As for the latter:
 
 ```
