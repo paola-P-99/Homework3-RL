@@ -1,0 +1,22 @@
+colcon build
+
+source install/setup.bash
+
+ros2 launch iiwa_bringup iiwa.launch.py command_interface:="velocity" robot_controller:="velocity_controller" use_sim:=true use_vision:=true world_file:=sphere.world initial_positions_file:=initial_positions_sphere.yaml
+
+ros2 launch iiwa_bringup iiwa.launch.py command_interface:="velocity" robot_controller:="velocity_controller" use_sim:=true use_vision:=true world_file:=empty.world initial_positions_file:=initial_positions_aruco.yaml
+
+ros2 run ros2_opencv ros2_opencv_node 
+
+ros2 run aruco_ros single --ros-args -r /image:=/videocamera -r /camera_info:=/camera_info -p marker_id:=201 -p marker_size:=0.2 -p reference_frame:=camera_link -p marker_frame:=aruco_marker_frame -p camera_frame:=camera_link_optical
+
+ros2 run ros2_kdl_package ros2_kdl_vision_control --ros-args -p cmd_interface:=velocity -p task_mode_:=positioning -p offset_x:=0.2 -p offset_y:=-0.2 -p offset_z:=0.0
+
+
+ros2 run aruco_ros single --ros-args -r /image:=/videocamera -r /camera_info:=/camera_info -p marker_id:=201 -p marker_size:=0.2 -p reference_frame:=camera_link_optical -p marker_frame:=aruco_marker_frame -p camera_frame:=camera_link
+
+ros2 run ros2_kdl_package ros2_kdl_vision_control --ros-args -p cmd_interface:=velocity -p task_mode_:=look_at_point 
+
+
+
+
