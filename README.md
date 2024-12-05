@@ -30,16 +30,16 @@ The code provides different command interfaces the one implemented is the veloci
 
 
 # sphere detection 
-To detect the sphere you have to run the following line of code  in an other terminal connected to the same docker container after launching the sphere word
+To detect the sphere you have to run the following line of code  in an other terminal connected to the same docker container after launching the sphere word to see the image of the sphere use 
+```
+ros2 run rqt_image_view rqt_image_view
+
+```
+then run the command  in another terminal to see the detection 
 
 ```
 ros2 run ros2_opencv ros2_opencv_node 
 ```
-then run the command 
-```
-ros2 run rqt_image_view rqt_image_view
-```
-
 # Aruco interaction 
  After launching the aruco word to be able to detect the marker of the aruco run the following line of code 
  
@@ -52,7 +52,11 @@ ros2 run aruco_ros single --ros-args -r /image:=/videocamera -r /camera_info:=/c
 ```
 ros2 run ros2_kdl_package ros2_kdl_vision_control --ros-args -p cmd_interface:=velocity -p task_mode_:=positioning
 ```
- The other task is a look at point task to see it run the command 
+ if you want to run the command to use the look at point use the following command to detect the aruco marker 
+
+ ```
+ros2 run aruco_ros single --ros-args -r /image:=/videocamera -r /camera_info:=/camera_info -p marker_id:=201 -p marker_size:=0.2 -p reference_frame:=camera_link_optimal -p marker_frame:=aruco_marker_frame -p camera_frame:=camera_link_optical
+```
  
 ```
 ros2 run ros2_kdl_package ros2_kdl_vision_control --ros-args -p cmd_interface:=velocity -p task_mode_:=look_at_point
