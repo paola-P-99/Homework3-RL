@@ -57,6 +57,7 @@ ros2 run ros2_kdl_package ros2_kdl_vision_control --ros-args -p cmd_interface:=v
  ```
 ros2 run aruco_ros single --ros-args -r /image:=/videocamera -r /camera_info:=/camera_info -p marker_id:=201 -p marker_size:=0.2 -p reference_frame:=camera_link_optimal -p marker_frame:=aruco_marker_frame -p camera_frame:=camera_link_optical
 ```
+the run in an other terminal the command to execute the look at point task 
  
 ```
 ros2 run ros2_kdl_package ros2_kdl_vision_control --ros-args -p cmd_interface:=velocity -p task_mode_:=look_at_point
